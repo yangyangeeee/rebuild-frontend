@@ -18,7 +18,7 @@ export const LogoImage = styled.img`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 287px; /* 크기 조절 가능 */
+  width: 287px;
   pointer-events: none;
   user-select: none;
 `;
@@ -43,7 +43,6 @@ export const TodoCardPart = styled.div`
   width: 95px;
   height: 68px;
   background: #ffe2e9;
-  /* border: 3px solid #fff; */
   border-radius: 0 0 18px 18px;
   z-index: 1;
 `;

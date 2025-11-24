@@ -7,7 +7,6 @@ export const Wrapper = styled.section`
   justify-content: center;
 `;
 
-// 실제 분홍 카드
 export const Card = styled.div`
   width: 100%;
   height: 140px;
@@ -21,7 +20,6 @@ export const Card = styled.div`
   justify-content: center;
 `;
 
-// 텍스트
 export const Text = styled.p`
   font-family: "Rubik Scribble", "Pretendard", sans-serif;
   font-size: 18px;
