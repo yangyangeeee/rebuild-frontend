@@ -6,6 +6,7 @@ import NavBar from "../../components/NavBar";
 import TodoCard from "../../pages/Home/components/TodoCard/TodoCard";
 import SinceCard from "../../pages/Home/components/SinceCard/SinceCard";
 import ReasonCard from "../../pages/Home/components/ReasonCard/ReasonCard";
+import TodayCard from "./components/TodayCard/TodayCard";
 
 import WaveImg from "../../assets/wave_background.svg";
 import bSmileImg from "../../assets/Smile_b.svg";
@@ -46,6 +47,8 @@ export default function MainPage() {
             <span className="white">RWARD</span>
             <span>!</span>
           </S.TopMessage>
+
+          <TodayCard />
         </S.ScrollArea>
       </S.TopSection>
 
