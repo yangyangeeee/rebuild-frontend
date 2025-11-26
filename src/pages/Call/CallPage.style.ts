@@ -35,7 +35,7 @@ export const EditBadge = styled.button`
   top: 24px;
   right: 24px;
   padding: 6px 14px;
-  border-radius: 999px;
+  border-radius: 50px;
   border: none;
   background: rgba(0, 0, 0, 0.3);
   color: #ffffff;

@@ -139,6 +139,16 @@ export const FromBar = styled.div`
   color: #000;
 `;
 
+export const NameInput = styled.input`
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 16px;
+  font-family: "Pretendard", sans-serif;
+  color: #000;
+`;
+
 /* 편지지 */
 export const LetterBody = styled.div`
   flex: 1;

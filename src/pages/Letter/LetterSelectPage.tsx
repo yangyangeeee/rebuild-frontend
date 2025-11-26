@@ -1,4 +1,5 @@
 import * as S from "./LetterSelectPage.style";
+import { useNavigate } from "react-router-dom";
 
 import Header from "../../components/Header";
 import NavBar from "../../components/NavBar";
@@ -13,6 +14,11 @@ import Flower3 from "../../assets/four_leaf_flower.svg";
 import Flower4 from "../../assets/five_leaf_flower_mini.svg";
 
 export default function LetterSelectPage() {
+  const navigate = useNavigate();
+
+  const handleLetterClick = () => {
+    navigate("/letterwrite");
+  };
   return (
     <S.Container>
       <Header />
@@ -42,7 +48,7 @@ export default function LetterSelectPage() {
           <img src={chatIcon} alt="메세지 보내기" />
         </S.GlassCircle>
 
-        <S.GlassCircle>
+        <S.GlassCircle onClick={handleLetterClick}>
           <img src={mailIcon} alt="편지쓰기" />
         </S.GlassCircle>
       </S.ButtonRow>

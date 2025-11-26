@@ -1,5 +1,7 @@
 import * as S from "./LetterWritePage.style";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import type { ChangeEvent } from "react";
 
 import Header from "../../components/Header";
 import NavBar from "../../components/NavBar";
@@ -11,9 +13,19 @@ import Flower4 from "../../assets/5_Dots_l.svg";
 
 export default function LetterWritePage() {
   const navigate = useNavigate();
+  const [toName, setToName] = useState<string>("");
+  const [fromName, setFromName] = useState<string>("");
 
   const handleWriteClick = () => {
     navigate("/letterdetail");
+  };
+
+  const handleToChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setToName(e.target.value);
+  };
+
+  const handleFromChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setFromName(e.target.value);
   };
 
   return (
@@ -31,7 +43,14 @@ export default function LetterWritePage() {
 
         <S.LeftInner>
           <S.InnerOutline className="to">
-            <S.ToBar>TO.</S.ToBar>
+            <S.ToBar>
+              <div>TO.</div>
+              <S.NameInput
+                type="text"
+                value={toName}
+                onChange={handleToChange}
+              />
+            </S.ToBar>
           </S.InnerOutline>
 
           <S.InnerOutline className="body">
@@ -53,7 +72,14 @@ export default function LetterWritePage() {
           </S.InnerOutline>
 
           <S.InnerOutline className="from">
-            <S.FromBar>FROM.</S.FromBar>
+            <S.FromBar>
+              <div>FROM.</div>
+              <S.NameInput
+                type="text"
+                value={fromName}
+                onChange={handleFromChange}
+              />
+            </S.FromBar>
           </S.InnerOutline>
         </S.LeftInner>
       </S.LeftPane>

@@ -34,7 +34,7 @@ export const LeftInner = styled.div`
   position: relative;
   width: 100%;
   max-width: 430px;
-  background: #fddde6;
+  background: #ffe2e9;
   box-sizing: border-box;
   padding: 80px 0 40px;
   min-height: 100%;

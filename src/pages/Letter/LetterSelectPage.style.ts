@@ -1,25 +1,24 @@
 import styled from "styled-components";
 
 export const Container = styled.main`
-  min-height: 100vh;
   width: 100%;
-  background: #ffc4dd;
-  display: flex;
-  flex-direction: column;
+  min-height: 100vh;
+  background-color: #ffc4d1;
   align-items: center;
+  padding-bottom: 120px; /* nav바 자리 */
+  box-sizing: border-box;
 `;
 
 export const TopMessage = styled.div`
   width: 100%;
   position: absolute;
   text-align: center;
-  //   background-color: #ff5fa4;
   color: #fddde6;
   font-family: "Rubik Mono One", sans-serif;
   font-size: 13px;
   z-index: 10;
   border-top: 5px solid black;
-  padding-top: 1px;
+  //   padding-top: 1px;
 `;
 
 export const WaveWrapper = styled.div`
