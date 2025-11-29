@@ -3,11 +3,11 @@ import styled from 'styled-components';
 export const Background=styled.div`
 background-color:#FF5FA4;
 width: 400px;
-height:700px;
+height:956px;
 overflow:hidden;
 display:flex;
 flex-direction:column;
-justify-content:space-evenly  ;  
+justify-content:space-between  ;  
 
 
 align-items: center;
@@ -88,14 +88,14 @@ width:80px;
 height:80px;
 position:absolute;
 z-index:10;
-top: 20px;left: 55px;
+top: 20px;left: 90px;
 `
 export const Asterisk=styled.img`
 width:25px;
 height:25px;
 position:absolute;
 z-index:10;
-top: 45px;left: 18px;
+top: 30px;left: 45px;
 `
 export const Qurter_flower=styled.img`
 width:90px;
@@ -145,11 +145,12 @@ export const DIV =styled.div`
 width:100%;
 height:360px;
 z-index:10;position: relative;
+margin-top:30px;
 `;
-
+//회원가입 정보창
 export const Signup_Box=styled.div`
 width:300px;
-height:220px;
+height:268px;
 z-index:20;
 border:2px solid white;
 border-radius:27px;
@@ -187,6 +188,8 @@ border-radius:20px;
 padding:2px 20px;outline: none;
 
 `;
+//버튼 UI
+
 export const Signup_Button=styled.button`
 width:150px;
 height: 50px;
@@ -198,7 +201,7 @@ justify-content:center;
 align-items: center;
 text-align:center;
 border:none;
-margin-top:10px;
+margin:10px 0 150px 0;
 &:focus {
     outline: none;}
 `;

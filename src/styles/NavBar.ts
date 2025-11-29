@@ -10,7 +10,7 @@ display: flex;
   align-items: center;
 
 
-position: fixed;
+position: absolute;
 width:380px;
 height:80px;
 border:2px solid black;
