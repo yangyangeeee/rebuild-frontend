@@ -46,7 +46,7 @@ export default function CallPage() {
               </S.EditRow>
 
               <S.EditRow>
-                <S.EditPreviewBox>프리뷰</S.EditPreviewBox>
+                <S.EditPreviewBox>예시사진</S.EditPreviewBox>
                 <S.EditIconCircle type="button">
                   <S.EditIconImg src={penEditIcon} alt="프로필 이미지 편집" />
                 </S.EditIconCircle>
