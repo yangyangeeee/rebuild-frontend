@@ -1,6 +1,5 @@
 import styled from "styled-components";
 
-/* 화면 전체 컨테이너 */
 export const Container = styled.div`
   width: 100%;
   min-height: 100vh;

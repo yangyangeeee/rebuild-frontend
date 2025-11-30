@@ -100,22 +100,6 @@ export const TopMessage = styled.div`
   top: 62px;
 `;
 
-export const Bubble = styled.div`
-  margin-top: 40px;
-  padding: 8px 14px;
-  border-radius: 999px;
-  background-color: #ffe2e9;
-  font-size: 11px;
-  font-weight: 500;
-  color: #333;
-`;
-
-export const LetterImage = styled.img`
-  margin-top: 20px;
-  width: 200px;
-  max-width: 70%;
-`;
-
 export const SpeechBubble = styled.div`
   position: relative;
   padding: 8px 26px;

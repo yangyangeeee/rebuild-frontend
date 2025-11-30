@@ -9,6 +9,9 @@ import Letter from "./pages/Letter/LetterSelectPage";
 import LetterWrite from "./pages/Letter/LetterWritePage";
 import LetterDetail from "./pages/Letter/LetterDetailPage";
 import CallPage from "./pages/Call/CallPage";
+import Calling from "./pages/Call/Calling";
+import SecretLockPage from "./pages/Secret/SecretLockPage";
+import MySecret from "./pages/Secret/MySecret";
 
 function App() {
   return (
@@ -24,6 +27,9 @@ function App() {
           <Route path="/letterwrite" element={<LetterWrite />} />
           <Route path="/letterdetail" element={<LetterDetail />} />
           <Route path="/call" element={<CallPage />} />
+          <Route path="/calling" element={<Calling />} />
+          <Route path="/secret" element={<SecretLockPage />} />
+          <Route path="/mysecret" element={<MySecret />} />
         </Routes>
       </AppContainer>
     </BrowserRouter>

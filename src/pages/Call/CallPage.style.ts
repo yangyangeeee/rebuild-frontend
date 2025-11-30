@@ -57,7 +57,7 @@ export const EditBadge = styled.button`
   height: 37px;
   z-index: 10;
 
-  border-radius: 999px;
+  border-radius: 65px;
   background: transparent;
   border: 1px solid rgba(255, 255, 255, 0.9);
 

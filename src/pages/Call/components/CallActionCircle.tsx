@@ -1,4 +1,5 @@
 import * as S from "./CallActionCircle.style";
+import { useNavigate } from "react-router-dom";
 
 import chatIcon from "../../../assets/chat_icon.svg";
 import callIcon from "../../../assets/call_icon.svg";
@@ -12,6 +13,8 @@ type ActionButtonProps = {
 };
 
 export default function CallActionsRow() {
+  const navigate = useNavigate();
+
   const actions: ActionButtonProps[] = [
     { label: "메시지", iconSrc: chatIcon, alt: "메시지 아이콘" },
     { label: "전화", iconSrc: callIcon, alt: "전화 아이콘" },
@@ -19,11 +22,19 @@ export default function CallActionsRow() {
     { label: "메일", iconSrc: mailIcon, alt: "메일 아이콘" },
   ];
 
+  const handleClick = (label: string) => {
+    if (label === "전화") {
+      navigate("/calling"); // ← CallScreen 페이지로 이동!
+    } else {
+      console.log(`${label} 버튼 클릭!`);
+    }
+  };
+
   return (
     <S.Row>
       {actions.map((action) => (
         <S.Item key={action.label}>
-          <S.Button type="button">
+          <S.Button type="button" onClick={() => handleClick(action.label)}>
             <S.IconImg src={action.iconSrc} alt={action.alt} />
           </S.Button>
           <S.Label>{action.label}</S.Label>
