@@ -1,7 +1,7 @@
 // 온보딩(소개)-4
 import * as S from "./Onboard.style";
 
-import RebuildLogo from "../../../assets/Rebuild_logo_3.svg";
+import RebuildLogo from "@/assets/Rebuild_logo_3.svg";
 
 export default function Onboard3() {
   return (

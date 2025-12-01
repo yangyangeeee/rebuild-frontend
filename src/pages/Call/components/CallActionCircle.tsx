@@ -1,10 +1,10 @@
-import * as S from "./CallActionCircle.style";
 import { useNavigate } from "react-router-dom";
+import * as S from "./CallActionCircle.style";
 
-import chatIcon from "../../../assets/chat_icon.svg";
-import callIcon from "../../../assets/call_icon.svg";
-import duoIcon from "../../../assets/duo_icon.svg";
-import mailIcon from "../../../assets/mail_icon.svg";
+import chatIcon from "@/assets/chat_icon.svg";
+import callIcon from "@/assets/call_icon.svg";
+import duoIcon from "@/assets/duo_icon.svg";
+import mailIcon from "@/assets/mail_icon.svg";
 
 type ActionButtonProps = {
   label: string;

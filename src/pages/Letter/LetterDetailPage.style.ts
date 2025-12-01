@@ -20,6 +20,7 @@ export const TopMessage = styled.div`
   font-size: 13px;
   z-index: 10;
   border-top: 5px solid black;
+  white-space: nowrap;
 `;
 
 export const ContentWrapper = styled.div`

@@ -1,7 +1,7 @@
 // 온보딩(소개)-1
 import * as S from "./Onboard.style";
 
-import CharacterImg from "../../../assets/Rebuild_character.svg";
+import CharacterImg from "@/assets/Rebuild_character.svg";
 
 export default function Onboard2() {
   return (

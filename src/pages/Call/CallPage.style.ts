@@ -5,6 +5,7 @@ export const Container = styled.div`
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+
   background: radial-gradient(
       circle at 87% 52%,
       rgba(255, 45, 142, 0.85) 0%,
@@ -229,9 +230,6 @@ export const EditPreviewBox = styled.div`
 
   font-size: 12px;
   letter-spacing: 0.04em;
-
-  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.35), 0 0 22px rgba(255, 255, 255, 0.6),
-    inset 0 0 10px rgba(255, 255, 255, 0.5);
 
   background: rgba(0, 0, 0, 0.18);
 `;

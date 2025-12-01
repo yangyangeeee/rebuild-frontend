@@ -1,5 +1,5 @@
-import React from "react";
-import Rebuild_logo from "../assets/Rebuild_logo.svg";
+// import React from "react";
+import Rebuild_logo from "@/assets/Rebuild_logo.svg";
 import {
   HEAD,
   Rebuild_Logo,

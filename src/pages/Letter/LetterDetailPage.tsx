@@ -1,10 +1,10 @@
 import * as S from "./LetterDetailPage.style";
 import { useNavigate } from "react-router-dom";
 
-import Header from "../../components/Header";
+import Header from "@/components/Header";
 
-import rebuildLogo from "../../assets/Rebuild_logo_start.svg";
-import arrowBack from "../../assets/arrow_back_b.svg";
+import rebuildLogo from "@/assets/Rebuild_logo_start.svg";
+import arrowBack from "@/assets/arrow_back_b.svg";
 
 export default function LetterDetailPage() {
   const navigate = useNavigate();

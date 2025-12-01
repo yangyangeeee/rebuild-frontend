@@ -1,10 +1,7 @@
-import * as S from "../LetterSelectPage.style";
+import * as S from "@/pages/Letter/LetterSelectPage.style";
 
-// import wave1 from "../../assets/wave_background.svg";
-// import wave2 from "../../assets/wave_background_black.svg";
-
-import wave1 from "../../../assets/wave_background.svg";
-import wave2 from "../../../assets/wave_background_black.svg";
+import wave1 from "@/assets/wave_background.svg";
+import wave2 from "@/assets/wave_background_black.svg";
 
 export default function WaveBanner() {
   return (

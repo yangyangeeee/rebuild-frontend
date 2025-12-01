@@ -1,17 +1,17 @@
 import { useNavigate } from "react-router-dom";
 import * as S from "./Start.style";
 
-import Header from "../../components/Header";
-import NavBar from "../../components/NavBar";
+import Header from "@/components/Header";
+import NavBar from "@/components/NavBar";
 
-import startLogoImg from "../../assets/Rebuild_logo_start.svg";
-import arrowBack from "../../assets/arrow_back.svg";
-import Flower1 from "../../assets/five_leaf_flower.svg";
-import Flower2 from "../../assets/four_leaf_flower.svg";
-import Flower3 from "../../assets/five_leaf_flower_mini.svg";
-import Flower4 from "../../assets/four_leaf_flower_start.svg";
-import Flower5 from "../../assets/six_leaf_flower.svg";
-import Flower6 from "../../assets/5_Dots.svg";
+import startLogoImg from "@/assets/Rebuild_logo_start.svg";
+import arrowBack from "@/assets/arrow_back.svg";
+import Flower1 from "@/assets/five_leaf_flower.svg";
+import Flower2 from "@/assets/four_leaf_flower.svg";
+import Flower3 from "@/assets/five_leaf_flower_mini.svg";
+import Flower4 from "@/assets/four_leaf_flower_start.svg";
+import Flower5 from "@/assets/six_leaf_flower.svg";
+import Flower6 from "@/assets/5_Dots.svg";
 
 export default function Home() {
   const navigate = useNavigate();

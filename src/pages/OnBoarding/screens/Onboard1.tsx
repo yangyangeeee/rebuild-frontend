@@ -1,13 +1,13 @@
 // 온보딩(소개)-0
 import * as S from "./Onboard.style";
 
-import startLogo from "../../../assets/Rebuild_logo.svg";
-import SmileImg from "../../../assets/Smile_ob.svg";
-import Flower1 from "../../../assets/six_leaf_flower.svg";
-import Flower2 from "../../../assets/five_leaf_flower.svg";
-import Flower3 from "../../../assets/five_leaf_flower_mini.svg";
-import Flower4 from "../../../assets/5_Dots.svg";
-import Flower5 from "../../../assets/four_leaf_flower_ob.svg";
+import startLogo from "@/assets/Rebuild_logo.svg";
+import SmileImg from "@/assets/Smile_ob.svg";
+import Flower1 from "@/assets/six_leaf_flower.svg";
+import Flower2 from "@/assets/five_leaf_flower.svg";
+import Flower3 from "@/assets/five_leaf_flower_mini.svg";
+import Flower4 from "@/assets/5_Dots.svg";
+import Flower5 from "@/assets/four_leaf_flower_ob.svg";
 
 export default function Onboard1() {
   return (

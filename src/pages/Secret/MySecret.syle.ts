@@ -29,6 +29,7 @@ export const TopMessage = styled.div`
   z-index: 5;
   border-top: 5px solid black;
   padding-top: 1px;
+  white-space: nowrap;
 `;
 
 export const SecretArea = styled.section`

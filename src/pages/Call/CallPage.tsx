@@ -1,13 +1,13 @@
 import { useState } from "react";
 import * as S from "./CallPage.style";
 
-import Header from "../../components/Header";
-import NavBar from "../../components/NavBar";
+import Header from "@/components/Header";
+import NavBar from "@/components/NavBar";
 import CallActionsCircle from "./components/CallActionCircle";
 import CallInfoCard from "./components/CallInfoCard";
 
-import closeEditIcon from "../../assets/close_icon.svg";
-import penEditIcon from "../../assets/edit_icon.svg";
+import closeEditIcon from "@/assets/close_icon.svg";
+import penEditIcon from "@/assets/edit_icon.svg";
 
 export default function CallPage() {
   const name = "EX";

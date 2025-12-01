@@ -1,6 +1,6 @@
 import * as S from "./TodoCard.style";
 
-import checkImg from "../../../../assets/todo_check.svg";
+import checkImg from "@/assets/todo_check.svg";
 
 export default function TodoCard() {
   return (

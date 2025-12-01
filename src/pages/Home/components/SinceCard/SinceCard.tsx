@@ -1,7 +1,7 @@
 import * as S from "./SinceCard.style";
 
-import sinceBg from "../../../../assets/since_broken.svg";
-import sinceLogo from "../../../../assets/Rebuild_logo_3.svg";
+import sinceBg from "@/assets/since_broken.svg";
+import sinceLogo from "@/assets/Rebuild_logo_3.svg";
 
 export default function SinceCard() {
   return (

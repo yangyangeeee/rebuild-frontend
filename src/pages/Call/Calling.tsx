@@ -1,11 +1,11 @@
 import * as S from "./Calling.style";
 
-import speakerIcon from "../../assets/brand_awareness.svg";
-import videoIcon from "../../assets/duo_icon.svg";
-import soundoffIcon from "../../assets/mic_off.svg";
-import moreIcon from "../../assets/more_horiz.svg";
-import doneIcon from "../../assets/call_end.svg";
-import dialIcon from "../../assets/dialpad.svg";
+import speakerIcon from "@/assets/brand_awareness.svg";
+import videoIcon from "@/assets/duo_icon.svg";
+import soundoffIcon from "@/assets/mic_off.svg";
+import moreIcon from "@/assets/more_horiz.svg";
+import doneIcon from "@/assets/call_end.svg";
+import dialIcon from "@/assets/dialpad.svg";
 
 export default function CallScreen() {
   return (

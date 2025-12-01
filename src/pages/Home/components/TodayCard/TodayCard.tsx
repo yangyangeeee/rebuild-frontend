@@ -1,6 +1,6 @@
 import * as S from "./TodayCard.style";
 
-import LogoImg from "../../../../assets/Rebuild_logo_start.svg";
+import LogoImg from "@/assets/Rebuild_logo_start.svg";
 
 export default function TodayCard() {
   return (

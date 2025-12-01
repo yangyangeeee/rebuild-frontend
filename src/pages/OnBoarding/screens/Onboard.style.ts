@@ -91,13 +91,14 @@ export const FlowerLayer = styled.section`
 export const TopMessage = styled.div`
   width: 100%;
   text-align: center;
-  color: #fddde6;
+  color: #ffc4d1;
   font-family: "Rubik Mono One", sans-serif;
   font-size: 13px;
   z-index: 5;
   position: absolute;
   padding-top: 1px;
   top: 62px;
+  white-space: nowrap;
 `;
 
 export const SpeechBubble = styled.div`
@@ -117,7 +118,7 @@ export const SpeechBubble = styled.div`
 
   &.speech2 {
     position: absolute;
-    bottom: 324px;
+    bottom: 375px;
   }
 
   &.speech1 {
@@ -194,26 +195,25 @@ export const LogoBox = styled.div`
   position: relative;
   width: 100%;
   height: 320px;
-  margin-top: 120px;
+  margin-top: 40px;
 `;
 
 export const OverlayText = styled.div`
   position: absolute;
-  top: 110px;
+  top: 100px;
   left: 50%;
   transform: translateX(-50%);
   font-family: "Rubik Mono One", sans-serif;
   font-size: 20px;
   color: white;
   z-index: 5;
-  //   text-shadow: 0px 0px 6px rgba(0, 0, 0, 0.25);
   white-space: nowrap;
 `;
 
 export const SpeechHead = styled.div`
   content: "";
   position: absolute;
-  bottom: 359px;
+  bottom: 410px;
   left: 50%;
   transform: translateX(-50%);
 

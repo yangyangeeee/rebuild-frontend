@@ -1,21 +1,21 @@
 import { useNavigate } from "react-router-dom";
 import * as S from "./MySecret.syle";
 
-import Header from "../../components/Header";
-import NavBar from "../../components/NavBar";
+import Header from "@/components/Header";
+import NavBar from "@/components/NavBar";
 
-import SecretLetterImg from "../../assets/Rebuild_character.svg";
-import SecretLogoImg from "../../assets/Rebuild_logo_3.svg";
-import Flower1 from "../../assets/five_leaf_flower.svg";
-import Flower2 from "../../assets/four_leaf_flower.svg";
-import Flower3 from "../../assets/five_leaf_flower_mini.svg";
-import Flower4 from "../../assets/four_leaf_flower_start.svg";
-import Flower5 from "../../assets/six_leaf_flower.svg";
-import Flower6 from "../../assets/5_Dots.svg";
-import Flower7 from "../../assets/five_leaf_flower.svg";
-import Flower8 from "../../assets/5_Dots.svg";
-import chatIcon from "../../assets/chat_icon_b.svg";
-import letterIcon from "../../assets/mail_icon_b.svg";
+import SecretLetterImg from "@/assets/Rebuild_character.svg";
+import SecretLogoImg from "@/assets/Rebuild_logo_3.svg";
+import Flower1 from "@/assets/five_leaf_flower.svg";
+import Flower2 from "@/assets/four_leaf_flower.svg";
+import Flower3 from "@/assets/five_leaf_flower_mini.svg";
+import Flower4 from "@/assets/four_leaf_flower_start.svg";
+import Flower5 from "@/assets/six_leaf_flower.svg";
+import Flower6 from "@/assets/5_Dots.svg";
+import Flower7 from "@/assets/five_leaf_flower.svg";
+import Flower8 from "@/assets/5_Dots.svg";
+import chatIcon from "@/assets/chat_icon_b.svg";
+import letterIcon from "@/assets/mail_icon_b.svg";
 
 export default function MySecret() {
   const navigate = useNavigate();

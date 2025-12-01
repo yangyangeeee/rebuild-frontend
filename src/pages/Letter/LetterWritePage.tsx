@@ -3,13 +3,13 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import type { ChangeEvent } from "react";
 
-import Header from "../../components/Header";
-import NavBar from "../../components/NavBar";
+import Header from "@/components/Header";
+import NavBar from "@/components/NavBar";
 
-import Flower1 from "../../assets/Soft Flower_l.svg";
-import Flower2 from "../../assets/six_leaf_flower_l.svg";
-import Flower3 from "../../assets/five_leaf_flower_l.svg";
-import Flower4 from "../../assets/5_Dots_l.svg";
+import Flower1 from "@/assets/Soft Flower_l.svg";
+import Flower2 from "@/assets/six_leaf_flower_l.svg";
+import Flower3 from "@/assets/five_leaf_flower_l.svg";
+import Flower4 from "@/assets/5_Dots_l.svg";
 
 export default function LetterWritePage() {
   const navigate = useNavigate();

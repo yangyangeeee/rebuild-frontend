@@ -3,10 +3,10 @@ import { useNavigate } from "react-router-dom";
 
 import * as S from "./SecretLockPage.style";
 
-import Header from "../../components/Header";
-import NavBar from "../../components/NavBar";
+import Header from "@/components/Header";
+import NavBar from "@/components/NavBar";
 
-import LockImg from "../../assets/lock.svg";
+import LockImg from "@/assets/lock.svg";
 
 const SECRET_CODE = [1, 1, 1] as const; // 임의 비번
 

@@ -1,8 +1,8 @@
 // 온보딩(소개)-3
 import * as S from "./Onboard.style";
 
-import Phone3 from "../../../assets/phone_ob_3.svg";
-import Phone4 from "../../../assets/phone_ob_4.svg";
+import Phone3 from "@/assets/phone_ob_3.svg";
+import Phone4 from "@/assets/phone_ob_4.svg";
 
 export default function Onboard3() {
   return (

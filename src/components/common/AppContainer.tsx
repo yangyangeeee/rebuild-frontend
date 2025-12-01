@@ -13,8 +13,7 @@ const StyledContainer = styled.div`
   position: relative;
   overflow: hidden;
 
-  /* 모바일 뷰포트에서 잘 보이도록 max-width 설정도 고려 가능 */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border: 1.5px solid rgba(0, 0, 0, 0.25);
 `;
 
 interface AppContainerProps {

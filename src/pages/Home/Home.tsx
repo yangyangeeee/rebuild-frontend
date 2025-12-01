@@ -1,18 +1,18 @@
 import { useNavigate } from "react-router-dom";
 import * as S from "./Home.style";
 
-import Header from "../../components/Header";
-import NavBar from "../../components/NavBar";
+import Header from "@/components/Header";
+import NavBar from "@/components/NavBar";
 
-import WaveImg from "../../assets/wave_background.svg";
-import CharacterImg from "../../assets/Rebuild_character.svg";
-import SmileImg from "../../assets/Smile.svg";
-import Flower1 from "../../assets/five_leaf_flower.svg";
-import Flower2 from "../../assets/four_leaf_flower.svg";
-import Flower3 from "../../assets/five_leaf_flower_mini.svg";
-import Flower4 from "../../assets/hard_flower.svg";
-import Flower5 from "../../assets/six_leaf_flower.svg";
-import Flower6 from "../../assets/5_Dots.svg";
+import WaveImg from "@/assets/wave_background.svg";
+import CharacterImg from "@/assets/Rebuild_character.svg";
+import SmileImg from "@/assets/Smile.svg";
+import Flower1 from "@/assets/five_leaf_flower.svg";
+import Flower2 from "@/assets/four_leaf_flower.svg";
+import Flower3 from "@/assets/five_leaf_flower_mini.svg";
+import Flower4 from "@/assets/hard_flower.svg";
+import Flower5 from "@/assets/six_leaf_flower.svg";
+import Flower6 from "@/assets/5_Dots.svg";
 
 export default function Home() {
   const navigate = useNavigate();

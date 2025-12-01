@@ -17,8 +17,9 @@ export const TopMessage = styled.div`
   font-family: "Rubik Mono One", sans-serif;
   font-size: 13px;
   z-index: 10;
-  border-top: 5px solid black;
+  border-top: 2px solid black;
   //   padding-top: 1px;
+  white-space: nowrap;
 `;
 
 export const WaveWrapper = styled.div`
