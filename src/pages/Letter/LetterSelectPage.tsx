@@ -1,8 +1,8 @@
 import * as S from "./LetterSelectPage.style";
 import { useNavigate } from "react-router-dom";
 
-import Header from "@/pages/Header/Header";
-import NavBar from "@/pages/NavBar/NavBar";
+import Header from "@/components/Header/Header";
+import NavBar from "@/components/NavBar/NavBar";
 import WaveBanner from "@/pages/Letter/components/WaveBanner";
 
 import chatIcon from "@/assets/chat_icon.svg";

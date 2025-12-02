@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import * as S from "@/pages/Secret/Secret2style";
 
-import Header from "@/pages/Header/Header";
+import Header from "@/components/Header/Header";
 
 import REBUILD_LOGO from "@/assets/Rebuild_logo_start.svg";
 import Back from "@/assets/arrow_back_b.svg";

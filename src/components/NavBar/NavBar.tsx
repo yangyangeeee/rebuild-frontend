@@ -1,5 +1,5 @@
 // import React from "react";
-import * as S from "@/pages/NavBar/NavBarStyle";
+import * as S from "@/components/NavBar/NavBarStyle";
 import { Link } from "react-router-dom";
 
 import HOME from "@/assets/home.svg";

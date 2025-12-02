@@ -3,7 +3,7 @@ import { useEffect, useCallback, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import * as S from "@/pages/Letter/KakaoTalkstyle";
 
-import Header from "@/pages/Header/Header";
+import Header from "@/components/Header/Header";
 
 import STEP from "@/assets/Step by step, you’re moving forward!.svg";
 import BACK from "@/assets/arrow_back_pink.svg";

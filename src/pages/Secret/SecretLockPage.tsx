@@ -3,8 +3,8 @@ import { useNavigate } from "react-router-dom";
 
 import * as S from "./SecretLockPage.style";
 
-import Header from "@/pages/Header/Header";
-import NavBar from "@/pages/NavBar/NavBar";
+import Header from "@/components/Header/Header";
+import NavBar from "@/components/NavBar/NavBar";
 
 import LockImg from "@/assets/lock.svg";
 

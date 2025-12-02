@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-import Header from "@/pages/Header/Header";
+import Header from "@/components/Header/Header";
 import * as S from "@/pages/Community/CommunityWritestyle";
 
 import Letter_Char from "@/assets/letter_charter.svg";
@@ -14,7 +14,7 @@ const CommunityWrite = () => {
   const handleWriteSubmit = () => {
     console.log("글 작성 API 호출...");
 
-    navigate("/Community/postList"); 
+    navigate("/Community/postList");
   };
   return (
     <S.Background>

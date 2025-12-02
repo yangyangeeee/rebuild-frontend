@@ -1,8 +1,8 @@
 // 헤어진 이유 & 헤어진 날 입력 후 들어오는 페이지임
 import * as S from "./MainPage.style";
 
-import Header from "@/pages/Header/Header";
-import NavBar from "@/pages/NavBar/NavBar";
+import Header from "@/components/Header/Header";
+import NavBar from "@/components/NavBar/NavBar";
 import TodoCard from "@/pages/Home/components/TodoCard/TodoCard";
 import SinceCard from "@/pages/Home/components/SinceCard/SinceCard";
 import ReasonCard from "@/pages/Home/components/ReasonCard/ReasonCard";
