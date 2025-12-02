@@ -1,7 +1,6 @@
 <div align="center">
 
-**덕성 멋사 13기 데모데이**
-<img width="50%" height="486" alt="image" src="https://raw.githubusercontent.com/2025-RE-build/Frontend/refs/heads/%EC%96%91%EC%84%9C%EC%9C%A4/src/assets/Rebuild_logo.svg" />
+  <img width="50%" height="486" alt="image" src="https://raw.githubusercontent.com/2025-RE-build/Frontend/refs/heads/%EC%96%91%EC%84%9C%EC%9C%A4/src/assets/Rebuild_logo.svg" />
 
 </div>
 
