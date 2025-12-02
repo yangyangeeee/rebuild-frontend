@@ -1,8 +1,8 @@
 // import React from "react";
 import { useNavigate } from "react-router-dom";
 
-import * as S from "@/styles/Comments";
-import Header from "@/components/Header";
+import * as S from "./CommentsStyle";
+import Header from "@/pages/Header/Header";
 
 import Letter_Char from "@/assets/letter_charter.svg";
 import Back_white from "@/assets/arrow_back_white.svg";

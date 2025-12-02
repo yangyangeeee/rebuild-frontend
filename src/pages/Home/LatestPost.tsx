@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect, useCallback } from 'react';
-import * as S from "../../styles/LatestPost";
+import * as S from "./LatestPoststyle";
 
 //이미지 import 
 import FIRE from '../../img/local_fire_department.png';
