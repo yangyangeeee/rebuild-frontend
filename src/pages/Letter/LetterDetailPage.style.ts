@@ -37,7 +37,7 @@ export const LeftInner = styled.div`
   max-width: 430px;
   background: #ffe2e9;
   box-sizing: border-box;
-  padding: 80px 0 40px;
+  padding: 42px 0 0;
   min-height: 100%;
 `;
 
@@ -101,6 +101,7 @@ export const TextArea = styled.textarea`
   color: #000;
   box-sizing: border-box;
   font-family: "Pretendard", sans-serif;
+  line-height: 28px;
 
   &::placeholder {
     color: #444;
@@ -116,4 +117,25 @@ export const LetterBody = styled.div`
   position: relative;
   width: 100%;
   height: 100%;
+`;
+
+export const SaveRow = styled.div`
+  margin-top: 25px;
+  display: flex;
+  justify-content: center;
+  position: relative;
+`;
+
+export const SaveButton = styled.button`
+  padding: 8px 24px;
+  border-radius: 999px;
+  border: 1px solid #000000;
+  background-color: #ffffff;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+
+  &:active {
+    transform: translateY(1px);
+  }
 `;

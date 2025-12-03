@@ -1,6 +1,6 @@
 import * as S from "@/pages/Letter/LetterWritePage.style";
-import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
+import { useState, useEffect } from "react";
 import type { ChangeEvent } from "react";
 
 import Header from "@/components/Header/Header";
@@ -11,13 +11,32 @@ import Flower2 from "@/assets/six_leaf_flower_l.svg";
 import Flower3 from "@/assets/five_leaf_flower_l.svg";
 import Flower4 from "@/assets/5_Dots_l.svg";
 
+type LetterLocationState = {
+  letterText?: string;
+};
+
 export default function LetterWritePage() {
   const navigate = useNavigate();
+  const location = useLocation();
+
   const [toName, setToName] = useState<string>("");
   const [fromName, setFromName] = useState<string>("");
 
+  const [letterPreview, setLetterPreview] = useState<string>("");
+
+  useEffect(() => {
+    const state = location.state as LetterLocationState | null;
+    if (state?.letterText !== undefined) {
+      setLetterPreview(state.letterText);
+    }
+  }, [location.state]);
+
+  const hasLetter = letterPreview.trim().length > 0;
+
   const handleWriteClick = () => {
-    navigate("/letterdetail");
+    navigate("/letterdetail", {
+      state: { letterText: letterPreview },
+    });
   };
 
   const handleToChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -55,6 +74,17 @@ export default function LetterWritePage() {
 
           <S.InnerOutline className="body">
             <S.LetterBody>
+              {hasLetter && (
+                <S.PreviewText>
+                  {letterPreview.split("\n").map((line) => (
+                    <span key={line}>
+                      {line}
+                      <br />
+                    </span>
+                  ))}
+                </S.PreviewText>
+              )}
+
               <S.LineList>
                 {Array.from({ length: 17 }).map((_, idx) => (
                   <S.LineRow key={idx} />
@@ -64,7 +94,7 @@ export default function LetterWritePage() {
               <S.WriteRow>
                 <S.LineSegment />
                 <S.WriteButton type="button" onClick={handleWriteClick}>
-                  WRITE
+                  {hasLetter ? "SAVE" : "WRITE"}
                 </S.WriteButton>
                 <S.LineSegment />
               </S.WriteRow>
@@ -83,6 +113,7 @@ export default function LetterWritePage() {
           </S.InnerOutline>
         </S.LeftInner>
       </S.LeftPane>
+
       <NavBar />
     </S.Container>
   );

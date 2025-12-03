@@ -14,6 +14,9 @@ const StyledContainer = styled.div`
   overflow: hidden;
 
   border: 1.5px solid rgba(0, 0, 0, 0.25);
+
+  // 테두리 대신 그림자 줄거면 이거
+  // box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);
 `;
 
 interface AppContainerProps {

@@ -1,13 +1,37 @@
 import * as S from "@/pages/Letter/LetterDetailPage.style";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
+import { useState } from "react";
+import type { ChangeEvent } from "react";
 
 import Header from "@/components/Header/Header";
 
 import rebuildLogo from "@/assets/Rebuild_logo_start.svg";
 import arrowBack from "@/assets/arrow_back_b.svg";
 
+type LetterLocationState = {
+  letterText?: string;
+};
+
 export default function LetterDetailPage() {
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const state = location.state as LetterLocationState | null;
+
+  const [letterText, setLetterText] = useState<string>(state?.letterText ?? "");
+
+  const handleChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
+    setLetterText(e.target.value);
+  };
+
+  const handleSave = () => {
+    navigate("/letterwrite", {
+      state: {
+        letterText,
+      },
+      replace: true, // (선택) 히스토리 쌓고 싶으면 이 줄은 빼도 됨
+    });
+  };
 
   return (
     <S.Container>
@@ -24,12 +48,23 @@ export default function LetterDetailPage() {
           </S.TopBar>
 
           <S.LetterBody>
-            <S.TextArea placeholder="하고 싶은 말을 편하게 적어 보세요 :)" />
+            <S.TextArea
+              value={letterText}
+              onChange={handleChange}
+              placeholder="하고 싶은 말을 편하게 적어 보세요 :)"
+            />
+
             <S.LineList>
               {Array.from({ length: 20 }).map((_, idx) => (
                 <S.LineRow key={idx} />
               ))}
             </S.LineList>
+
+            <S.SaveRow>
+              <S.SaveButton type="button" onClick={handleSave}>
+                저장하기
+              </S.SaveButton>
+            </S.SaveRow>
           </S.LetterBody>
         </S.LeftInner>
       </S.ContentWrapper>

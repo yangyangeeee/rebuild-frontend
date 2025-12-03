@@ -208,3 +208,18 @@ export const WriteButton = styled.button`
 
   cursor: pointer;
 `;
+
+export const PreviewText = styled.p`
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  right: 24px;
+  bottom: 72px;
+  overflow-y: hidden;
+
+  font-size: 12px;
+  // line-height: 2.2;
+  color: #000000;
+  white-space: pre-wrap;
+  line-height: 26px;
+`;
