@@ -12,7 +12,7 @@ import fiveleaf from "@/assets/5_Dots.svg";
 import Smile from "@/assets/smile_ob.svg";
 
 interface LoginForm {
-  userId: string;
+  loginId: string;
   password: string;
 }
 
@@ -20,7 +20,7 @@ const Login = () => {
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState<LoginForm>({
-    userId: "",
+    loginId: "",
     password: "",
   });
 
@@ -32,21 +32,54 @@ const Login = () => {
     }));
   };
 
+  const API_URL = "http://localhost:8080/api/users/login";
+
   const handleSubmit = async () => {
-    if (!formData.userId || !formData.password) {
+    if (!formData.loginId || !formData.password) {
       alert("모든 정보를 입력해주세요.");
       return;
     }
 
-    try {
-      console.log("로그인 데이터:", formData);
-      alert(`${formData.userId}님 환영합니다!`);
-      navigate("/home");
-    } catch (error) {
-      console.error("로그인 중 오류 발생:", error);
-      alert("서버 오류로 로그인에 실패했습니다.");
-    }
+    const requestData = {
+      loginId: formData.loginId, // 프론트 userId -> 백엔드 loginId
+      password: formData.password,
   };
+
+  try {
+     // 2. 📡 API 호출 (fetch 사용)
+    const response = await fetch(API_URL, {
+    method: 'POST',
+     headers: { 
+     'Content-Type': 'application/json' 
+    },
+     body: JSON.stringify(requestData),
+              // 3.  쿠키(RefreshToken)를 주고받기 위해 필수 설정
+              credentials: 'include' 
+    });
+    
+    if (response.ok) {
+              // 응답 본문에서 accessToken을 추출
+              const responseData = await response.json(); 
+              const accessToken = responseData.accessToken;
+              
+              // 4.  Access Token 저장 (보통 로컬/세션 스토리지 또는 메모리에 저장)
+              localStorage.setItem('accessToken', accessToken);
+              
+              // Refresh Token은 'credentials: include' 옵션 덕분에 
+              // 브라우저에 HTTP Only 쿠키로 자동으로 저장됩니다.
+              
+    alert(`${formData.loginId}님 환영합니다!`);
+    navigate("/home");
+    } else {
+    const errorText = await response.text(); 
+    alert(`로그인 실패: ${errorText || response.statusText}`);
+    }
+    
+    } catch (error) {
+    console.error("로그인 중 오류 발생:", error);
+    alert("서버 연결에 실패했습니다. (CORS, 서버 꺼짐 등 확인 필요)");
+     }
+    };
 
   return (
     <S.Background>
@@ -101,8 +134,8 @@ const Login = () => {
           <S.INPUT_content
             type="text"
             placeholder="입력하시오..."
-            name="userId"
-            value={formData.userId}
+            name="loginId"
+            value={formData.loginId}
             onChange={handleChange}
           />
         </S.INPUT_BOX>
