@@ -10,6 +10,8 @@ import arrowBack from "@/assets/arrow_back_b.svg";
 
 type LetterLocationState = {
   letterText?: string;
+  toName?: string;
+  fromName?: string;
 };
 
 export default function LetterDetailPage() {
@@ -17,6 +19,9 @@ export default function LetterDetailPage() {
   const location = useLocation();
 
   const state = location.state as LetterLocationState | null;
+
+  const toName = state?.toName ?? "";
+  const fromName = state?.fromName ?? "";
 
   const [letterText, setLetterText] = useState<string>(state?.letterText ?? "");
 
@@ -28,8 +33,10 @@ export default function LetterDetailPage() {
     navigate("/letterwrite", {
       state: {
         letterText,
+        toName,
+        fromName,
       },
-      replace: true, // (선택) 히스토리 쌓고 싶으면 이 줄은 빼도 됨
+      replace: true, // 히스토리 쌓고 싶으면 이 줄은 빼도 됨
     });
   };
 

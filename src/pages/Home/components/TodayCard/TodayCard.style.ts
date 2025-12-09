@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Container = styled.section`
   position: relative;
   margin: 80px 16px 0;
-  padding: 32px 24px;
+  padding: 32px 20px;
   // width: 369px;
   // height: 119px;
   background-color: #000000;

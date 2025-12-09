@@ -1,5 +1,8 @@
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 import * as S from "@/pages/Home/Start.style";
+import { saveBreakup } from "@/lib/api";
+import { ApiError } from "@/utils/api";
 
 import Header from "@/components/Header/Header";
 import NavBar from "@/components/NavBar/NavBar";
@@ -16,8 +19,39 @@ import Flower6 from "@/assets/5_Dots.svg";
 export default function Home() {
   const navigate = useNavigate();
 
-  const handleSaveClick = () => {
-    navigate("/mainpage");
+  const [reason, setReason] = useState<string>("");
+  const [breakupDate, setBreakupDate] = useState<string>("");
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
+
+  const handleSaveClick = async () => {
+    if (!reason.trim()) {
+      alert("이별 이유를 입력해 주세요.");
+      return;
+    }
+    if (!breakupDate) {
+      alert("이별 날짜를 선택해 주세요.");
+      return;
+    }
+
+    try {
+      setIsSubmitting(true);
+      await saveBreakup({
+        reason: reason.trim(),
+        breakupDate,
+      });
+
+      navigate("/mainpage");
+    } catch (error) {
+      if (error instanceof ApiError) {
+        console.error("이별 정보 저장 실패:", error.status, error.message);
+        alert("이별 정보를 저장하는 중 오류가 발생했어요. 다시 시도해 주세요.");
+      } else {
+        console.error(error);
+        alert("알 수 없는 오류가 발생했어요.");
+      }
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -47,15 +81,25 @@ export default function Home() {
             <S.QuestionTitle>
               상대방과 헤어진 이유는 무엇인가요 ?
             </S.QuestionTitle>
-            <S.Input placeholder="입력하세요..." />
+            <S.Input
+              placeholder="입력하세요..."
+              value={reason}
+              onChange={(e) => setReason(e.target.value)}
+            />
           </S.QuestionCard>
 
           <S.QuestionCard>
             <S.QuestionTitle>언제 헤어졌나요 ?</S.QuestionTitle>
-            <S.Input placeholder="입력하세요..." />
+            <S.Input
+              type="date"
+              value={breakupDate}
+              onChange={(e) => setBreakupDate(e.target.value)}
+            />
           </S.QuestionCard>
 
-          <S.SaveButton onClick={handleSaveClick}>SAVE</S.SaveButton>
+          <S.SaveButton onClick={handleSaveClick} disabled={isSubmitting}>
+            {isSubmitting ? "SAVING..." : "SAVE"}
+          </S.SaveButton>
         </S.BodySection>
       </S.ContentWrapper>
 

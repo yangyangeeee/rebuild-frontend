@@ -12,8 +12,8 @@ import CallPage from "@/pages/Call/CallPage";
 import Calling from "@/pages/Call/Calling";
 import SecretLockPage from "@/pages/Secret/SecretLockPage";
 import MySecret from "@/pages/Secret/MySecret";
-import MyLetters from "@/pages/Secret/Secret1";
-import MyComments from "@/pages/Secret/Secret2";
+import MyLetters from "@/pages/Secret/Secret2";
+import MyComments from "@/pages/Secret/Secret1";
 import Signup from "@/pages/SignUp/Signup.tsx";
 import KakaoTalk from "@/pages/Letter/KakaoTalk";
 import CommunityWrite from "@/pages/Community/CommunityWrite";
@@ -44,6 +44,8 @@ function App() {
           <Route path="/secret" element={<SecretLockPage />} />
           <Route path="/mysecret" element={<MySecret />} />
           <Route path="/my-letters" element={<MyLetters />} />
+          <Route path="/my-letters/:letterId" element={<LetterWrite />} />
+
           <Route path="/my-comments" element={<MyComments />} />
         </Routes>
       </AppContainer>

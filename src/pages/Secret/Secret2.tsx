@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import * as S from "@/pages/Secret/Secret2style";
 
@@ -10,79 +10,90 @@ import Chat from "@/assets/mail_icon_b.svg";
 import Delete from "@/assets/delete.svg";
 import Go from "@/assets/arrow_pre.svg";
 
-interface CommentData {
-  id: number;
-  postId: number;
-  date: string;
-  content: string;
+import { getMyLetters, deleteLetter } from "@/utils/api";
+import type { Letter } from "@/types/api";
+
+interface LetterCardProps {
+  letter: Letter;
+  onClickDetail: (id: number) => void;
+  onClickDelete: (id: number) => void;
 }
-const MOCK_COMMENTS: CommentData[] = [
-  {
-    id: 1,
-    postId: 101,
-    date: "2025.04.06",
-    content: "와 진짜 공감가요. 저도 맨날 그렇게 회피했었어요",
-  },
-  {
-    id: 2,
-    postId: 102,
-    date: "2025.04.06",
-    content: "오 대박 저만 그런 줄 알았어요. ",
-  },
-  {
-    id: 3,
-    postId: 103,
-    date: "2025.04.05",
-    content: "이거 제가 쓴 글인 줄 알았어요 너무 힘들어요 다들 힘내세요!",
-  },
-  {
-    id: 4,
-    postId: 104,
-    date: "2025.04.05",
-    content: "와 진짜 레전드... 공감 버튼 누르고 갑니다. 모두 화이팅!",
-  },
-  {
-    id: 5,
-    postId: 105,
-    date: "2025.04.04",
-    content:
-      "저는 결국 포기했어요. 너무 지치더라고요. 다른 분들은 꼭 성공하시길 바랍니다. 이 댓글 보고 조금이라도 힘이 됐으면 좋겠어요. 길게 썼는데 짤릴까요?",
-  },
-  {
-    id: 6,
-    postId: 106,
-    date: "2025.04.03",
-    content:
-      "혹시 글쓴이님 상황이랑 비슷한데 다른 결과 냈던 분 계신가요? 조언 부탁드립니다.",
-  },
-  {
-    id: 7,
-    postId: 107,
-    date: "2025.04.03",
-    content: "댓글 잘 안 다는데 이건 진짜 남겨야겠어요. 덕분에 힘 얻고 갑니다!",
-  },
-];
-const Big_Comment_Card: React.FC<{ data: CommentData }> = ({ data }) => (
-  <S.Big_Comment_Card>
-    <S.Middel_Card>
-      <S.Small_Card>
-        <S.DateAndDelete>
-          <S.DATE>{data.date}</S.DATE>
-          <S.DandG>
-            <S.DELETE src={Delete} />
-            <S.Go src={Go} />
-          </S.DandG>
-        </S.DateAndDelete>
-        <S.Card_content>{data.content}</S.Card_content>
-      </S.Small_Card>
-    </S.Middel_Card>
-  </S.Big_Comment_Card>
-);
 
-const Secret2 = () => {
+const LetterCard: React.FC<LetterCardProps> = ({
+  letter,
+  onClickDetail,
+  onClickDelete,
+}) => {
+  const createdDate = new Date(letter.createdAt);
+  const dateText = `${createdDate.getFullYear()}.${String(
+    createdDate.getMonth() + 1
+  ).padStart(2, "0")}.${String(createdDate.getDate()).padStart(2, "0")}`;
+
+  return (
+    <S.Big_Comment_Card>
+      <S.Middel_Card>
+        <S.Small_Card>
+          <S.DateAndDelete>
+            <S.DATE>{dateText}</S.DATE>
+            <S.DandG>
+              <S.DELETE
+                src={Delete}
+                onClick={() => onClickDelete(letter.id)}
+                style={{ cursor: "pointer" }}
+              />
+              <S.Go
+                src={Go}
+                onClick={() => onClickDetail(letter.id)}
+                style={{ cursor: "pointer" }}
+              />
+            </S.DandG>
+          </S.DateAndDelete>
+
+          <S.Card_content>{letter.content}</S.Card_content>
+        </S.Small_Card>
+      </S.Middel_Card>
+    </S.Big_Comment_Card>
+  );
+};
+
+const Secret2: React.FC = () => {
   const navigate = useNavigate();
+  const [letters, setLetters] = useState<Letter[]>([]);
+  const [loading, setLoading] = useState<boolean>(false);
 
-  const comments = MOCK_COMMENTS;
+  useEffect(() => {
+    const fetchLetters = async () => {
+      try {
+        setLoading(true);
+        const data = await getMyLetters();
+        setLetters(data);
+      } catch (error) {
+        console.error("편지 목록 조회 실패:", error);
+        alert("편지 목록을 불러오는 중 오류가 발생했습니다.");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchLetters();
+  }, []);
+
+  const handleClickDetail = (letterId: number) => {
+    navigate(`/my-letters/${letterId}`);
+  };
+
+  const handleDeleteLetter = async (letterId: number) => {
+    const confirmed = window.confirm("이 편지를 정말 삭제할까요?");
+    if (!confirmed) return;
+
+    try {
+      await deleteLetter(letterId);
+      setLetters((prev) => prev.filter((l) => l.id !== letterId));
+    } catch (error) {
+      console.error("편지 삭제 실패:", error);
+      alert("편지를 삭제하는 중 오류가 발생했습니다.");
+    }
+  };
 
   return (
     <S.Background>
@@ -127,29 +138,21 @@ const Secret2 = () => {
           </S.Circle_Box>
         </S.First_Box>
       </S.DIV>
+
       <S.List_Box>
-        {comments.map((comment) => (
-          <Big_Comment_Card key={comment.id} data={comment} />
-        ))}
-        {/*
-            <S.Big_Comment_Card>
-                <S.Middel_Card>
-                    <S.Small_Card>
-                        <S.DateAndDelete>
-                        <S.DATE>2025.04.06</S.DATE>
-                        <S.DandG>
-                            <S.DELETE src={Delete}/>
-                            <S.Go src={Go}/>
-                        </S.DandG>
-                        </S.DateAndDelete>
-                        <S.Card_content>
-                        와 진짜 공감이요 
-                        제 전남친도 똑같이 그렇게 회피형이었어요 진짜 최악
-                        </S.Card_content>
-                    </S.Small_Card>
-                </S.Middel_Card>
-            </S.Big_Comment_Card>
-*/}
+        {loading && <div>불러오는 중...</div>}
+        {!loading && letters.length === 0 && (
+          <div>아직 저장된 편지가 없어요.</div>
+        )}
+        {!loading &&
+          letters.map((letter) => (
+            <LetterCard
+              key={letter.id}
+              letter={letter}
+              onClickDetail={handleClickDetail}
+              onClickDelete={handleDeleteLetter}
+            />
+          ))}
       </S.List_Box>
     </S.Background>
   );

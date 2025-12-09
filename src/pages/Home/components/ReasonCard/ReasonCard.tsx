@@ -1,10 +1,14 @@
 import * as S from "@/pages/Home/components/ReasonCard/ReasonCard.style";
 
-export default function ReasonCard() {
+interface ReasonCardProps {
+  reason: string;
+}
+
+export default function ReasonCard({ reason }: ReasonCardProps) {
   return (
     <S.Wrapper>
       <S.Card>
-        <S.Text>상대방과 헤어진 이유</S.Text>
+        <S.Text>{reason}</S.Text>
       </S.Card>
     </S.Wrapper>
   );

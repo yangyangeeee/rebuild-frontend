@@ -1,4 +1,5 @@
 // 헤어진 이유 & 헤어진 날 입력 후 들어오는 페이지임
+import { useEffect, useState } from "react";
 import * as S from "@/pages/Home/MainPage.style";
 
 import Header from "@/components/Header/Header";
@@ -17,7 +18,41 @@ import bFlower3 from "@/assets/five_leaf_flower_b.svg";
 import bFlower4 from "@/assets/four_leaf_flower_b.svg";
 import bFlower5 from "@/assets/five_leaf_flower_mini_b.svg";
 
+import {
+  getBreakupHomeSummary,
+  type BreakupHomeSummaryResponse,
+} from "@/lib/api";
+import { ApiError } from "@/utils/api";
+
 export default function MainPage() {
+  const [summary, setSummary] = useState<BreakupHomeSummaryResponse | null>(
+    null
+  );
+  const [loading, setLoading] = useState<boolean>(true);
+
+  useEffect(() => {
+    const fetchSummary = async () => {
+      try {
+        const data = await getBreakupHomeSummary();
+        setSummary(data);
+      } catch (error) {
+        if (error instanceof ApiError) {
+          console.error(
+            "이별 정보 홈 요약 조회 실패:",
+            error.status,
+            error.message
+          );
+        } else {
+          console.error(error);
+        }
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchSummary();
+  }, []);
+
   return (
     <S.Container>
       <Header />
@@ -27,6 +62,7 @@ export default function MainPage() {
           <S.WaveDivider>
             <img src={WaveImg} alt="divider" />
           </S.WaveDivider>
+
           <S.StickerLayer>
             <img src={bSmileImg} className="bsmile" />
             <img src={bFlower1} className="flower bf1" />
@@ -36,15 +72,27 @@ export default function MainPage() {
             <img src={bFlower5} className="flower bf5" />
             <img src={bFlower5} className="flower bf5--bottom" />
           </S.StickerLayer>
+
           <TodoCard />
-          <SinceCard />
-          <ReasonCard />
+
+          {!loading && summary && (
+            <>
+              <SinceCard
+                dDayText={summary.dDayText}
+                daysSince={summary.daysSince}
+                breakupDate={summary.breakupDate}
+              />
+              <ReasonCard reason={summary.reason} />
+            </>
+          )}
+
           <S.TopMessage>
             <span className="white">STEP BY S</span>
             <span>TEP, YOU’RE MOVING F</span>
             <span className="white">ORWARD</span>
             <span>!</span>
           </S.TopMessage>
+
           <TodayCard />
           <CommunityCard />
         </S.ScrollArea>

@@ -64,8 +64,8 @@ export const ItemInner = styled.div`
 
   display: flex;
   align-items: center;
-  padding-left: 82px;
-  padding-right: 24px;
+  padding-left: 59px;
+  // padding-right: 24px;
 `;
 
 export const Check = styled.img`
