@@ -9,7 +9,7 @@ import QurterFlower from "@/assets/four_leaf_flower_letter.svg";
 import Asterisk1 from "@/assets/Asterisk 1.svg";
 import SoftFlower from "@/assets/four_leaf_flower.svg";
 import fiveleaf from "@/assets/5_Dots.svg";
-import Smile from "@/assets/smile_ob.svg";
+import Smile from "@/assets/Smile_ob.svg";
 
 interface LoginForm {
   loginId: string;
@@ -45,20 +45,20 @@ const Login = () => {
 
     try {
       const response = await fetch(API_URL, {
-        method: 'POST',
-        headers: { 
-          'Content-Type': 'application/json' 
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(requestData),
-        credentials: 'include' 
+        credentials: "include",
       });
-      
+
       if (response.ok) {
-        const responseData = await response.json(); 
+        const responseData = await response.json();
         const accessToken = responseData.accessToken;
-        
-        localStorage.setItem('accessToken', accessToken);
-        
+
+        localStorage.setItem("accessToken", accessToken);
+
         alert(`${formData.loginId}님 환영합니다!`);
         navigate("/home");
       } else {
@@ -69,7 +69,10 @@ const Login = () => {
         if (contentType && contentType.includes("application/json")) {
           const errorData = await response.json();
           // 서버 응답 구조에 따라 errorData.message 혹은 errorData.error 등으로 수정하세요.
-          errorMsg = errorData.message || errorData.error || "아이디 또는 비밀번호를 확인해주세요.";
+          errorMsg =
+            errorData.message ||
+            errorData.error ||
+            "아이디 또는 비밀번호를 확인해주세요.";
         } else {
           // JSON이 아닌 텍스트로 올 경우
           errorMsg = await response.text();
@@ -77,7 +80,6 @@ const Login = () => {
 
         alert(`로그인 실패: ${errorMsg}`);
       }
-      
     } catch (error) {
       console.error("로그인 중 오류 발생:", error);
       alert("서버 연결에 실패했습니다.");
