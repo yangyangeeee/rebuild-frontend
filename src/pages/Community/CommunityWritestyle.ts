@@ -192,3 +192,36 @@ export const Write_Button = styled.button`
     border-color: none;
   }
 `;
+
+export const ImagePreviewWrapper = styled.div`
+  width: 354px;
+  height: 200px;
+  margin-top: 16px;
+  border-radius: 16px;
+  border: 3px solid #ff5fa2;
+  overflow: hidden;
+  position: relative;
+  background-color: #111;
+`;
+
+export const ImagePreview = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+`;
+
+export const RemoveImageButton = styled.button`
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 24px;
+  height: 24px;
+  border-radius: 999px;
+  border: none;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
