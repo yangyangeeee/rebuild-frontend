@@ -50,27 +50,28 @@ const Comments: React.FC = () => {
       return;
     }
 
-    const fetchPostAndComments = async (): Promise<void> => {
-      try {
-        // 게시글 + 댓글 동시에 요청
-        const [postData, commentData] = await Promise.all([
-          getPostDetail(postId),
-          getComments(postId),
-        ]);
+  // Comments.tsx
+const fetchPostAndComments = async () => {
+  setIsLoading(true);
+  try {
+    // 1. 먼저 게시글 정보부터 가져옵니다.
+    const postData = await getPostDetail(Number(postId));
+    setPost(postData);
 
-        setPost(postData);
-        setComments(commentData);
-      } catch (err: unknown) {
-        console.error(err);
-        if (err instanceof ApiError) {
-          setError(`게시글을 불러오지 못했습니다. (code: ${err.status})`);
-        } else {
-          setError("게시글을 불러오지 못했습니다.");
-        }
-      } finally {
-        setIsLoading(false);
-      }
-    };
+    // 2. 댓글은 따로 가져오되, 실패해도 게시글은 보이게 합니다.
+    try {
+      const commentData = await getComments(Number(postId));
+      setComments(commentData.comments || []); // 데이터 구조 확인 필요
+    } catch (e) {
+      console.warn("댓글을 불러오는데 실패했습니다.", e);
+      setComments([]); // 에러 시 빈 배열로 초기화
+    }
+  } catch (error) {
+    alert("게시글을 불러올 수 없습니다.");
+  } finally {
+    setIsLoading(false);
+  }
+};
 
     void fetchPostAndComments();
   }, [id]);

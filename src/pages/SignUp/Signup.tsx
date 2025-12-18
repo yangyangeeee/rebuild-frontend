@@ -30,8 +30,7 @@ const Signup = () => {
     nickname: "",
     password: "",
   });
-  const API_URL = "http://localhost:8080/api/users/signup";
-
+  const API_URL = "https://rebuildlion.cloud/api/users/signup";
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
@@ -41,47 +40,50 @@ const Signup = () => {
   };
 
   const handleSubmit = async () => {
-    // 1. 유효성 검사 (Validation)
+    // 1. 유효성 검사
     if (!formData.loginId || !formData.nickname || !formData.password) {
       alert("모든 정보를 입력해주세요.");
       return;
     }
 
     const requestData = {
-      loginId: formData.loginId, // state의 loginId 사용
+      loginId: formData.loginId,
       nickname: formData.nickname,
       password: formData.password,
     };
 
     try {
-      // ✨ fetch 대신 axios.post 사용
       const response = await axios.post(API_URL, requestData, {
         headers: {
           "Content-Type": "application/json",
         },
-        // ✨ CORS 환경에서 쿠키를 주고받기 위해 필수 (로그인 시 필요)
         withCredentials: true,
       });
 
+      // ✅ 1. 중복 알림 문제 해결: 아래 로직을 한 번만 실행합니다.
       saveLoginInfo(formData.loginId, formData.nickname);
-
-      alert("회원가입 성공! " + response.data);
+      
+      // response.data가 객체일 수 있으므로 문자열만 추출하거나 기본 메시지 출력
+      alert("회원가입 성공!"); 
       navigate("/login");
 
-      // Axios는 2xx 응답만 성공으로 처리하고, 응답 본문은 response.data에 있습니다.
-      alert("회원가입 성공! " + response.data);
-      navigate("/login");
     } catch (error) {
-      // Axios 에러 처리 (네트워크 오류, CORS, 4xx/5xx 모두 처리)
+      // ✅ 2. [Object object] 에러 메시지 해결
       if (axios.isAxiosError(error) && error.response) {
-        // 서버에서 응답을 받은 경우 (4xx, 5xx 에러)
-        const errorMsg = error.response.data || error.response.statusText;
+        // 서버에서 보내주는 구체적인 에러 메시지가 있다면 그것을 사용하고, 없으면 기본 문구 출력
+        const errorData = error.response.data;
+        
+        // 보통 백엔드에서 { "message": "중복된 아이디입니다" } 형태로 보낼 때가 많습니다.
+        // 데이터 구조에 따라 errorData.message 혹은 errorData를 선택하세요.
+        const errorMsg = typeof errorData === 'string' 
+          ? errorData 
+          : (errorData.message || "중복된 아이디거나 닉네임입니다.");
+
         console.error("회원가입 실패 응답:", error.response);
         alert(`회원가입 실패: ${errorMsg}`);
       } else {
-        // 서버 연결 자체 실패 (CORS, 네트워크 다운 등)
-        console.error("네트워크 오류 또는 서버 연결 실패:", error);
-        alert("서버 연결에 실패했습니다. (CORS 또는 서버 꺼짐)");
+        console.error("네트워크 오류:", error);
+        alert("서버 연결에 실패했습니다.");
       }
     }
   };

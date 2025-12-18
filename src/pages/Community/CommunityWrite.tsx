@@ -55,33 +55,37 @@ const CommunityWrite = () => {
     const previewUrl = URL.createObjectURL(file);
     setImagePreviewUrl(previewUrl);
   };
-
-  // 글 작성
   const handleWriteSubmit = async () => {
     if (!title.trim() || !content.trim()) {
       alert("제목과 내용을 모두 입력해 주세요.");
       return;
     }
-
+  
     setIsSubmitting(true);
-
+  
     try {
       let imageUrl: string | null = null;
-
-      // 이미지가 있으면 먼저 업로드
+  
       if (imageFile) {
         imageUrl = await uploadPostImage(imageFile);
       }
-
+  
+      // 변경 부분: 서버가 null을 싫어할 수 있으므로 
+      // imageUrl이 있을 때만 데이터를 구성하거나, 빈 문자열을 보냅니다.
       const body: PostRequest = {
-        title,
-        content,
-        imageUrl,
+        title: title.trim(),
+        content: content.trim(),
+        imageUrl: imageUrl ?? "", // null 대신 빈 문자열("")을 보내봅니다.
       };
-
+  
+      /* 만약 위 방법도 안 된다면 필드 자체를 제거해 보세요:
+         const body: any = { title, content };
+         if (imageUrl) body.imageUrl = imageUrl;
+      */
+  
       await createPost(body);
-
       navigate("/Community/postList");
+      
     } catch (error: unknown) {
       if (error instanceof ApiError) {
         alert(`글 작성에 실패했습니다. (code: ${error.status})`);
@@ -93,7 +97,7 @@ const CommunityWrite = () => {
       setIsSubmitting(false);
     }
   };
-
+ 
   return (
     <S.Background>
       <Header />

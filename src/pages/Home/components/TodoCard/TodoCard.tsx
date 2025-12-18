@@ -11,7 +11,7 @@ export default function TodoCard() {
 
   useEffect(() => {
     const fetchMissions = async () => {
-      try {
+      try { 
         const data = await getTodayMissions();
         setMissions(data);
       } catch (error) {
@@ -38,24 +38,25 @@ export default function TodoCard() {
       </S.Title>
 
       <S.List>
-        {slots.map((index) => {
-          const mission = missions[index];
+  {slots.map((index) => {
+    const mission = missions[index];
 
-          return (
-            <S.ItemOuter key={mission ? mission.userMissionId : index}>
-              <S.ItemInner>
-                <S.Check src={checkImg} alt="todo" />
-                <S.Input
-                  type="text"
-                  readOnly
-                  value={loading ? "" : mission ? mission.content : ""}
-                  placeholder={loading ? "불러오는 중..." : mission ? "" : ""}
-                />
-              </S.ItemInner>
-            </S.ItemOuter>
-          );
-        })}
-      </S.List>
+    return (
+      <S.ItemOuter key={`todo-slot-${index}`}>
+        <S.ItemInner>
+          <S.Check src={checkImg} alt="todo" />
+          <S.Input
+            type="text"
+            readOnly
+            // mission?.content가 falsy할 경우 빈 문자열을 반환하여 제어 상태 유지
+            value={loading ? "" : (mission?.content ?? "")}
+            placeholder={loading ? "불러오는 중..." : ""}
+          />
+        </S.ItemInner>
+      </S.ItemOuter>
+    );
+  })}
+</S.List>
     </S.Wrapper>
   );
 }

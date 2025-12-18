@@ -10,6 +10,7 @@ import type {
   CommentListResponse,
 } from "@/types/api";
 
+
 export interface ApiRequestOptions {
   method?: "GET" | "POST" | "PUT" | "DELETE" | "PATCH";
   headers?: Record<string, string>;
