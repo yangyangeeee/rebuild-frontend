@@ -44,7 +44,7 @@ export interface BreakupSaveRequest {
 
 // 이별 정보 저장/수정
 export async function saveBreakup(body: BreakupSaveRequest): Promise<void> {
-  return apiRequest<void>("/breakups", {
+  return apiRequest<void>("/api/breakups", {
     method: "POST",
     body,
     requiresAuth: true,
@@ -60,7 +60,7 @@ export interface BreakupHomeSummaryResponse {
 }
 
 export async function getBreakupHomeSummary(): Promise<BreakupHomeSummaryResponse> {
-  return apiRequest<BreakupHomeSummaryResponse>("/breakups/home-summary", {
+  return apiRequest<BreakupHomeSummaryResponse>("/api/breakups/home-summary", {
     method: "GET",
     requiresAuth: true,
   });

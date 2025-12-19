@@ -130,7 +130,7 @@ export async function uploadPostImage(file: File): Promise<string> {
   const formData = new FormData();
   formData.append("file", file);
 
-  const response = await fetch(`${API_BASE_URL}/posts/upload`, {
+  const response = await fetch(`${API_BASE_URL}/api/posts/upload`, {
     method: "POST",
     body: formData,
   });
@@ -154,7 +154,7 @@ export async function createPost(body: PostRequest): Promise<PostResponse> {
 
 // 커뮤니티 전체 리스트
 export const getPostList = async (): Promise<PostResponse[]> => {
-  return apiRequest<PostResponse[]>("/posts/list", {
+  return apiRequest<PostResponse[]>("/api/posts/list", {
     method: "GET",
     requiresAuth: true,
   });
@@ -162,7 +162,7 @@ export const getPostList = async (): Promise<PostResponse[]> => {
 
 // 커뮤니티 개별 상세 페이지
 export const getPostDetail = async (postId: number): Promise<PostResponse> => {
-  return apiRequest<PostResponse>(`/posts/list/${postId}`, {
+  return apiRequest<PostResponse>(`/api/posts/list/${postId}`, {
     method: "GET",
     requiresAuth: true,
   });
@@ -170,7 +170,7 @@ export const getPostDetail = async (postId: number): Promise<PostResponse> => {
 
 // 최신글 3개
 export const getLatestPosts = async (): Promise<PostResponse[]> => {
-  return apiRequest<PostResponse[]>("/posts/latest", {
+  return apiRequest<PostResponse[]>("/api/posts/latest", {
     method: "GET",
     requiresAuth: true,
   });
