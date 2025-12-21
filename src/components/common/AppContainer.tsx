@@ -5,7 +5,7 @@ import React from "react";
 const StyledContainer = styled.div`
   width: 400px;
   // height: 956px;
-  min-height: 956px;
+  min-height: 100vh;
   margin: 0 auto;
   background-color: #ffffff;
 
