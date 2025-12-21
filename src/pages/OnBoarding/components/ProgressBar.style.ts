@@ -5,6 +5,8 @@ export const BarWrapper = styled.div`
   padding: 20px 0;
   display: flex;
   justify-content: center;
+  position: absolute;
+  top: 0px;
 `;
 
 export const BarBackground = styled.div`
