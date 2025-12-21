@@ -4,7 +4,8 @@ import React from "react";
 // 공통 레이아웃 스타일 정의
 const StyledContainer = styled.div`
   width: 400px;
-  height: 956px;
+  // height: 956px;
+  min-height: 956px;
   margin: 0 auto;
   background-color: #ffffff;
 
@@ -12,11 +13,6 @@ const StyledContainer = styled.div`
   flex-direction: column;
   position: relative;
   overflow: hidden;
-
-  border: 1.5px solid rgba(0, 0, 0, 0.25);
-
-  // 테두리 대신 그림자 줄거면 이거
-  // box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);
 `;
 
 interface AppContainerProps {
