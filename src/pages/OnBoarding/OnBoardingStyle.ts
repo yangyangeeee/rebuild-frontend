@@ -12,7 +12,7 @@ export const Container = styled.div`
 `;
 
 export const Button = styled.button`
-  margin-bottom: 50px;
+  // margin-bottom: 50px;
   //   padding: 12px 32px;
   width: 153px;
   height: 52px;
